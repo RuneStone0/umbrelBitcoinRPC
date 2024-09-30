@@ -6,7 +6,7 @@
 python -m venv venv #Create python environment
 ```
     
-```
+```py
 venv\Scripts\activate #Load python environment
 ```
 - Requirements (Windows) `pip install -r requirements.txt`

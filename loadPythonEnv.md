@@ -22,4 +22,4 @@ source venv/bin/activate #Load python environment
 - Requirements (Linux) `pip3 install -r requirements.txt`
 
 
-## Return to [Start](https://github.com/Juniorduc44/troubleshooting/tree/main/umbrelBitcoinRPC)
+## Return to [Start](https://github.com/Juniorduc44/umbrelBitcoinRPC/tree/main)

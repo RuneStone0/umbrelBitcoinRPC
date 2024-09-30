@@ -1,0 +1,9 @@
+# Python local environment
+venv
+
+# local environment user, pass, ip address...etc
+.env
+
+#practice files
+*practice*
+

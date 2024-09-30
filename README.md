@@ -12,10 +12,12 @@
 - from "example.env" to ".env"
 
 ## Next you will need to ssh into umbrel and change one [file]()
+- ssh login syntax
+ - `ssh umbrel@192.168.x.x`    
 - navigate to data folder
-    cd /data/
+ - `cd /data/`
 - copy and paste bitcoin.conf examples into the file with a text editor of choice
-    sudo nano bitcoin.conf
+ - `sudo nano bitcoin.conf`
 ### reference your .env file to make sure user and pass match for logging in
 
 ## Lastly Run the program

@@ -11,7 +11,7 @@
 #### Change the example.env
 - from "example.env" to ".env"
 
-## Next you will need to ssh into umbrel and change one [file]()
+## Next you will need to ssh into umbrel and change one [file](https://github.com/Juniorduc44/umbrelBitcoinRPC/blob/main/bitcoin.conf)
 - ssh login syntax
   - `ssh umbrel@192.168.x.x`    
 - navigate to data folder

@@ -59,6 +59,6 @@
 </br>
 </br>
 
-### [Next](https://github.com/Juniorduc44/troubleshooting/blob/main/umbrelBitcoinRPC/loadPythonEnv.md)
-## Return to [Start](https://github.com/Juniorduc44/troubleshooting/tree/main/umbrelBitcoinRPC)
+### [Next](https://github.com/Juniorduc44/umbrelBitcoinRPC/blob/main/loadPythonEnv.md)
+## Return to [Start](https://github.com/Juniorduc44/umbrelBitcoinRPC/tree/main)
 

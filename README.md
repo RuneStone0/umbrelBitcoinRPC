@@ -1,27 +1,21 @@
-## Start with enabling RPC and REST [here](https://github.com/Juniorduc44/umbrelBitcoinRPC/blob/main/umbrelBitcoinRPC.md)
-### If you have already enabled RPC and REST in Bitcoin Node "Advanced Settings" you can skip this step.
-</br>
-</br>
+# Interact with your Umbrel Bitcoin Node via RPC and REST
+This guide will help you interact with your Umbrel Bitcoin Node via RPC and REST. This will allow you to query your node for information and perform actions on the blockchain. This guide will also help you setup a python environment to run the scripts provided. The scripts provided will allow you to query your node for information and perform actions on the blockchain.
 
-## Next you can get your python environment setup [here](https://github.com/Juniorduc44/umbrelBitcoinRPC/blob/main/loadPythonEnv.md)
-### If you have an environment prestaged and active just load the requirements.txt file
-- (Linux) `pip3 install -r requirements.txt`
-- (Windows) `pip install -r requirements.txt`
-
-#### Change the example.env
-- from "example.env" to ".env"
-
-## Next you will need to ssh into umbrel and change one [file](https://github.com/Juniorduc44/umbrelBitcoinRPC/blob/main/bitcoin.conf)
-- ssh login syntax
-  - `ssh umbrel@192.168.x.x`    
-- navigate to data folder
-  - `cd /data/`
-- copy and paste bitcoin.conf examples into the file with a text editor of choice
-  - `sudo nano bitcoin.conf`
-### reference your .env file to make sure user and pass match for logging in
-
-## Lastly Run the program
-- Make sure you have [loaded](https://github.com/Juniorduc44/umbrelBitcoinRPC/blob/main/loadPythonEnv.md) your python environment and its now active
-- Type the following into the remote device which should be on the same local network
-  - (Linux) `python3 main.py`
-  - (Windows) `python main.py`
+# Setup
+1. **Enable RPC and REST in your Umbrel Bitcoin Node**
+   - Login to your Umbrel Node
+   - Navigate to the Bitcoin Node
+   - Click on the "Advanced Settings" tab
+   - Under "RPC and REST" toggle "Public REST API"
+   - Click "Save and Restart Bitcoin Node"
+2. **Get your RPC credentials**
+   - Navigate to the Bitcoin Node
+   - Click "Connect"
+   - Find the "RPC (Local Network)" credentials (you'll need them in the next step)
+3. **Prepare your local environment**
+   - Fork/Clone this repository
+   - Install requirements (`pip install -r requirements.txt`)
+   - Copy the `example.env` file to `.env` and fill in the necessary fields
+4. **Test the connection**
+   - Run the script (`python main.py`)
+   - If you see the current block height, you're all set!

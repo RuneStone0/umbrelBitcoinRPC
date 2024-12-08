@@ -1,5 +1,6 @@
 # Python local environment
 venv
+__pycache__
 
 # local environment user, pass, ip address...etc
 .env

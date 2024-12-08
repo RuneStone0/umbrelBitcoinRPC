@@ -1,9 +1,8 @@
-import requests
-from bitcoinrpc.authproxy import AuthServiceProxy, JSONRPCException
-from dotenv import load_dotenv
 import os
 import json
+from dotenv import load_dotenv
 from decimal import Decimal
+from bitcoinrpc.authproxy import AuthServiceProxy, JSONRPCException
 
 load_dotenv()
 

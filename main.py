@@ -1,19 +1,12 @@
-import subprocess
 import json
+from coreQuery import BitcoinRPC
 
-def run_core_query():
-    # Run the coreQuery.py script and capture its output
-    result = subprocess.run(['python', 'coreQuery.py'], capture_output=True, text=True)
-    return result.stdout
-
-def parse_blockchain_info(output):
-    # Find the start of the Blockchain Info JSON
-    start = output.find('{', output.find('Blockchain Info:'))
-    end = output.find('}', start) + 1
-    blockchain_json = output[start:end]
-    
+def parse_blockchain_info(blockchain_json):
     # Parse the JSON
-    blockchain_info = json.loads(blockchain_json)
+    try:
+        blockchain_info = json.loads(blockchain_json)
+    except json.JSONDecodeError:
+        raise ValueError("Invalid JSON format")
     
     # Extract the required information
     return {
@@ -23,8 +16,12 @@ def parse_blockchain_info(output):
     }
 
 def main():
-    output = run_core_query()
-    parsed_info = parse_blockchain_info(output)
+    rpc = BitcoinRPC()
+    blockchain_info_json = rpc.get_blockchain_info()
+    if "Exception" in blockchain_info_json:
+        raise ValueError(blockchain_info_json)
+    
+    parsed_info = parse_blockchain_info(blockchain_info_json)
     
     print("Parsed Blockchain Information:")
     print(f"- Chain: {parsed_info['chain']}")

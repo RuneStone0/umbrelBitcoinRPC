@@ -14,31 +14,33 @@ class DecimalEncoder(json.JSONEncoder):
             return float(obj)
         return super(DecimalEncoder, self).default(obj)
 
-# RPC connection details
-rpc_user = os.getenv("rpcUser")
-rpc_password = os.getenv("rpcPassword")
-rpc_host = os.getenv("rpcAddress")
-rpc_port = os.getenv("rpcPort")
-rpc_connection = f"http://{rpc_user}:{rpc_password}@{rpc_host}:{rpc_port}"
-print("RPC connection string created")
+class BitcoinRPC:
+    def __init__(self):
+        self.rpc_user = os.getenv("rpcUser")
+        self.rpc_password = os.getenv("rpcPassword")
+        self.rpc_host = os.getenv("rpcAddress")
+        self.rpc_port = os.getenv("rpcPort")
 
-try:
-    rpc_client = AuthServiceProxy(rpc_connection, timeout=120)
-    print("RPC client initialized")
+        if not all([self.rpc_user, self.rpc_password, self.rpc_host, self.rpc_port]):
+            raise ValueError("One or more RPC connection environment variables are not set")
 
-    # Get blockchain info
-    blockchain_info = rpc_client.getblockchaininfo()
-    print("Blockchain Info:")
-    print(json.dumps(blockchain_info, indent=4, cls=DecimalEncoder))
+        self.rpc_connection = f"http://{self.rpc_user}:{self.rpc_password}@{self.rpc_host}:{self.rpc_port}"
+        self.rpc_client = AuthServiceProxy(self.rpc_connection, timeout=120)
 
-    # Get network info
-    network_info = rpc_client.getnetworkinfo()
-    print("\nNetwork Info:")
-    print(json.dumps(network_info, indent=4, cls=DecimalEncoder))
+    def get_blockchain_info(self):
+        try:
+            blockchain_info = self.rpc_client.getblockchaininfo()
+            return json.dumps(blockchain_info, indent=4, cls=DecimalEncoder)
+        except JSONRPCException as json_exception:
+            return f"A JSON RPC Exception occurred: {json_exception}"
+        except Exception as general_exception:
+            return f"An error occurred: {general_exception}"
 
-except JSONRPCException as json_exception:
-    print(f"A JSON RPC Exception occurred: {json_exception}")
-except Exception as general_exception:
-    print(f"An error occurred: {general_exception}")
-
-print("Script execution completed.")
+    def get_network_info(self):
+        try:
+            network_info = self.rpc_client.getnetworkinfo()
+            return json.dumps(network_info, indent=4, cls=DecimalEncoder)
+        except JSONRPCException as json_exception:
+            return f"A JSON RPC Exception occurred: {json_exception}"
+        except Exception as general_exception:
+            return f"An error occurred: {general_exception}"
